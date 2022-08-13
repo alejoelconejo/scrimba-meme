@@ -8,5 +8,5 @@ export default function DownloadButton(props) {
         saveAs(blob, "image");
       });
   }
-  return <button onClick={downloadImage}>Save as</button>;
+  return <button onClick={downloadImage}>Download</button>;
 }
