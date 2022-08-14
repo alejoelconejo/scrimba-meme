@@ -9,5 +9,9 @@ export default function DownloadButton(props) {
       });
   }
 
-  return <button onClick={downloadImage}>Download</button>;
+  return (
+    <button className="button-download" onClick={downloadImage}>
+      Download
+    </button>
+  );
 }

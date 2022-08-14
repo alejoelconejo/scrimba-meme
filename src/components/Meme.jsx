@@ -58,12 +58,14 @@ export default function Meme() {
           Get a new meme image 🖼️
         </button>
       </div>
-      <div className="meme">
-        <img className="meme-img" src={meme.randomImage} />
-        <h2 className="meme--text top">{meme.topText}</h2>
-        <h2 className="meme--text bottom">{meme.bottomText}</h2>
-      </div>
-      <DownloadButton randomImage={meme.randomImage} />
+      <section className="meme-section">
+        <div className="meme">
+          <img className="meme-img" src={meme.randomImage} />
+          <h2 className="meme--text top">{meme.topText}</h2>
+          <h2 className="meme--text bottom">{meme.bottomText}</h2>
+        </div>
+        <DownloadButton randomImage={meme.randomImage} />
+      </section>
     </main>
   );
 }
