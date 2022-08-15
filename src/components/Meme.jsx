@@ -13,8 +13,8 @@ export default function Meme() {
   function getMemeImage() {
     const randomNumber = Math.floor(Math.random() * allMemes.length);
     const url = allMemes[randomNumber].url;
-    setMeme((prevState) => {
-      return { ...prevState, randomImage: url };
+    setMeme((prevMeme) => {
+      return { ...prevMeme, randomImage: url };
     });
   }
 
@@ -27,6 +27,12 @@ export default function Meme() {
     getMemes();
   }, []);
 
+  function clearText() {
+    setMeme((prevMeme) => {
+      return { ...prevMeme, topText: "", bottomText: "" };
+    });
+  }
+
   function handleChange(event) {
     const { name, value } = event.target;
     setMeme((prevMeme) => ({
@@ -34,6 +40,8 @@ export default function Meme() {
       [name]: value,
     }));
   }
+
+  const [fontSize, setFontSize] = useState(2);
 
   return (
     <main>
@@ -53,7 +61,21 @@ export default function Meme() {
             name="bottomText"
             type="text"
           />
+          <button
+            className="font-button"
+            onClick={() => setFontSize(fontSize + 0.2)}
+          >
+            +
+          </button>
+          <button
+            className="font-button"
+            onClick={() => setFontSize(fontSize - 0.2)}
+          >
+            -
+          </button>
+          <button onClick={clearText}>Clear</button>
         </div>
+
         <button className="form-button" onClick={getMemeImage}>
           Get a new meme image 🖼️
         </button>
@@ -61,8 +83,15 @@ export default function Meme() {
       <section className="meme-section">
         <div className="meme">
           <img className="meme-img" src={meme.randomImage} />
-          <h2 className="meme--text top">{meme.topText}</h2>
-          <h2 className="meme--text bottom">{meme.bottomText}</h2>
+          <h2 className="meme--text top" style={{ fontSize: `${fontSize}em` }}>
+            {meme.topText}
+          </h2>
+          <h2
+            className="meme--text bottom"
+            style={{ fontSize: `${fontSize}em` }}
+          >
+            {meme.bottomText}
+          </h2>
         </div>
         <DownloadButton randomImage={meme.randomImage} />
       </section>

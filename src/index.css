@@ -63,6 +63,10 @@ body {
   padding: 0.5rem;
 }
 
+.font-button {
+  width: 20px;
+}
+
 .form-button {
   background: linear-gradient(90.41deg, #711f8d 1.14%, #a818da 100%);
   border-radius: 5px;
