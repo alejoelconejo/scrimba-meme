@@ -6,15 +6,18 @@ export default function Meme() {
     topText: "",
     bottomText: "",
     randomImage: "https://i.imgflip.com/1bij.jpg",
+    name: "",
   });
 
   const [allMemes, setAllMemes] = useState([]);
 
+  console.log(meme);
+
   const getMemeImage = () => {
     const randomNumber = Math.floor(Math.random() * allMemes.length);
-    const url = allMemes[randomNumber].url;
+    const { url, name } = allMemes[randomNumber];
     setMeme((prevMeme) => {
-      return { ...prevMeme, randomImage: url };
+      return { ...prevMeme, randomImage: url, name: name };
     });
   };
 
@@ -86,7 +89,7 @@ export default function Meme() {
       </section>
       <section className="meme-section">
         <div className="meme">
-          <img className="meme-img" src={meme.randomImage} />
+          <img className="meme-img" src={meme.randomImage} alt={meme.name} />
           <h2 className="meme--text top" style={{ fontSize: `${fontSize}em` }}>
             {meme.topText}
           </h2>
