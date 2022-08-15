@@ -10,13 +10,13 @@ export default function Meme() {
 
   const [allMemes, setAllMemes] = useState([]);
 
-  function getMemeImage() {
+  const getMemeImage = () => {
     const randomNumber = Math.floor(Math.random() * allMemes.length);
     const url = allMemes[randomNumber].url;
     setMeme((prevMeme) => {
       return { ...prevMeme, randomImage: url };
     });
-  }
+  };
 
   useEffect(() => {
     async function getMemes() {
@@ -27,11 +27,11 @@ export default function Meme() {
     getMemes();
   }, []);
 
-  function clearText() {
+  const clearText = () => {
     setMeme((prevMeme) => {
       return { ...prevMeme, topText: "", bottomText: "" };
     });
-  }
+  };
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -45,7 +45,7 @@ export default function Meme() {
 
   return (
     <main>
-      <div className="form">
+      <section className="form">
         <div className="form-inputs">
           <input
             placeholder="Top text"
@@ -61,25 +61,29 @@ export default function Meme() {
             name="bottomText"
             type="text"
           />
-          <button
-            className="font-button"
-            onClick={() => setFontSize(fontSize + 0.2)}
-          >
-            +
-          </button>
-          <button
-            className="font-button"
-            onClick={() => setFontSize(fontSize - 0.2)}
-          >
-            -
-          </button>
-          <button onClick={clearText}>Clear</button>
+          <div className="font-buttons">
+            <button
+              className="font-button"
+              onClick={() => setFontSize(fontSize + 0.2)}
+            >
+              +
+            </button>
+            <button
+              className="font-button"
+              onClick={() => setFontSize(fontSize - 0.2)}
+            >
+              -
+            </button>
+            <button className="font-button" onClick={clearText}>
+              Clear
+            </button>
+          </div>
         </div>
 
         <button className="form-button" onClick={getMemeImage}>
           Get a new meme image 🖼️
         </button>
-      </div>
+      </section>
       <section className="meme-section">
         <div className="meme">
           <img className="meme-img" src={meme.randomImage} />
