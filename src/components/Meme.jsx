@@ -45,7 +45,7 @@ export default function Meme() {
   }
 
   const handleCaptureClick = useCallback(async () => {
-    const canvas = await html2canvas(document.querySelector(".meme"), {
+    const canvas = await html2canvas(document.querySelector("#meme"), {
       logging: true,
       letterRendering: 1,
       allowTaint: false,
@@ -107,7 +107,7 @@ export default function Meme() {
         </button>
       </section>
       <section className="flex justify-center flex-col gap-5">
-        <div className="relative w-fit mx-auto my-0">
+        <div className="relative w-fit mx-auto my-0" id="meme">
           <img
             className=" max-w-full mx-auto my-0 object-cover max-h-[450px]"
             src={meme.randomImage}
