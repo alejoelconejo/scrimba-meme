@@ -58,7 +58,7 @@ export default function Meme() {
   const [fontSize, setFontSize] = useState(2)
 
   return (
-    <main>
+    <main className="max-w-3xl mx-auto">
       <section className="flex flex-col px-12 py-8 gap-4">
         <div className="flex gap-4 flex-wrap items-center justify-center">
           <input
