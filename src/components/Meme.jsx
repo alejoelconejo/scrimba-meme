@@ -4,17 +4,6 @@ import downloadjs from "downloadjs"
 import html2canvas from "html2canvas"
 
 export default function Meme() {
-  const handleCaptureClick = useCallback(async () => {
-    const canvas = await html2canvas(document.querySelector(".meme"), {
-      logging: true,
-      letterRendering: 1,
-      allowTaint: false,
-      useCORS: true,
-    })
-    const dataURL = canvas.toDataURL("image/png")
-    downloadjs(dataURL, "meme.png", "image/png")
-  }, [])
-
   const [meme, setMeme] = useState({
     topText: "",
     bottomText: "",
@@ -55,6 +44,17 @@ export default function Meme() {
     }))
   }
 
+  const handleCaptureClick = useCallback(async () => {
+    const canvas = await html2canvas(document.querySelector(".meme"), {
+      logging: true,
+      letterRendering: 1,
+      allowTaint: false,
+      useCORS: true,
+    })
+    const dataURL = canvas.toDataURL("image/png")
+    downloadjs(dataURL, "meme.png", "image/png")
+  }, [])
+
   const [fontSize, setFontSize] = useState(2)
 
   return (
@@ -79,19 +79,19 @@ export default function Meme() {
           />
           <div className="flex gap-2">
             <button
-              className="font-sans text-base rounded p-2 font-bold bg-lime-500"
+              className="font-sans text-base rounded p-2 font-semibold bg-lime-500"
               onClick={() => setFontSize(fontSize + 0.2)}
             >
               +
             </button>
             <button
-              className="font-sans text-base rounded p-2 font-bold bg-lime-500"
+              className="font-sans text-base rounded p-2 font-semibold bg-lime-500"
               onClick={() => setFontSize(fontSize - 0.2)}
             >
               -
             </button>
             <button
-              className="font-sans text-base rounded p-2 font-bold bg-lime-500"
+              className="font-sans text-base rounded p-2 font-semibold bg-lime-500"
               onClick={clearText}
             >
               Clear
@@ -114,13 +114,13 @@ export default function Meme() {
             alt={meme.name}
           />
           <h2
-            className="font-meme absolute -translate-x-1/2 w-2/3 text-center select-none left-1/2 my-4 mx-0 py-0 px-1 text-3xl uppercase text-white top-0"
+            className="font-meme absolute -translate-x-1/2 w-2/3 text-center select-none left-1/2 my-4 mx-0 py-0 px-1 drop-shadow-meme uppercase text-white top-0"
             style={{ fontSize: `${fontSize}em` }}
           >
             {meme.topText}
           </h2>
           <h2
-            className="font-meme absolute -translate-x-1/2 w-2/3 text-center select-none left-1/2 my-4 mx-0 py-0 px-1 text-3xl uppercase text-white bottom-0"
+            className="font-meme absolute -translate-x-1/2 w-2/3 text-center select-none left-1/2 my-4 mx-0 py-0 px-1 drop-shadow-meme uppercase text-white bottom-0"
             style={{ fontSize: `${fontSize}em` }}
           >
             {meme.bottomText}
@@ -128,7 +128,7 @@ export default function Meme() {
         </div>
         {/* <DownloadButton randomImage={meme.randomImage} /> */}
         <button
-          className="rounded w-fit self-center p-2 text-sm font-sans"
+          className="rounded w-fit self-center p-2 text-sm bg-lime-500 font-semibold"
           onClick={handleCaptureClick}
         >
           Download
