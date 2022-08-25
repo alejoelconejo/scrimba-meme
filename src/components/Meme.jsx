@@ -59,9 +59,10 @@ export default function Meme() {
 
   return (
     <main>
-      <section className="form">
-        <div className="form-inputs">
+      <section className="flex flex-col px-12 py-8 gap-4">
+        <div className="flex gap-4 flex-wrap items-center justify-center">
           <input
+            className="font-sans text-lg text-slate-800 flex-1 rounded p-2 border-gray-300 border-2"
             placeholder="Top text"
             onChange={handleChange}
             value={meme.topText}
@@ -69,50 +70,69 @@ export default function Meme() {
             type="text"
           />
           <input
+            className="font-sans text-lg text-slate-800 flex-1 rounded p-2 border-gray-300 border-2"
             placeholder="Bottom text"
             onChange={handleChange}
             value={meme.bottomText}
             name="bottomText"
             type="text"
           />
-          <div className="font-buttons">
+          <div className="flex gap-2">
             <button
-              className="font-button"
+              className="font-sans text-base rounded p-2 font-bold bg-lime-500"
               onClick={() => setFontSize(fontSize + 0.2)}
             >
               +
             </button>
             <button
-              className="font-button"
+              className="font-sans text-base rounded p-2 font-bold bg-lime-500"
               onClick={() => setFontSize(fontSize - 0.2)}
             >
               -
             </button>
-            <button className="font-button" onClick={clearText}>
+            <button
+              className="font-sans text-base rounded p-2 font-bold bg-lime-500"
+              onClick={clearText}
+            >
               Clear
             </button>
           </div>
         </div>
 
-        <button className="form-button" onClick={getMemeImage}>
+        <button
+          className="rounded font-bold text-lg p-2 font-sans bg-gradient-to-r from-indigo-500 to-pink-500"
+          onClick={getMemeImage}
+        >
           Get a new meme image 🖼️
         </button>
       </section>
-      <section className="meme-section">
-        <div className="meme">
-          <img className="meme-img" src={meme.randomImage} alt={meme.name} />
-          <h2 className="meme--text top" style={{ fontSize: `${fontSize}em` }}>
+      <section className="flex justify-center flex-col gap-5">
+        <div className="relative w-fit mx-auto my-0">
+          <img
+            className=" max-w-full mx-auto my-0 object-cover max-h-[450px]"
+            src={meme.randomImage}
+            alt={meme.name}
+          />
+          <h2
+            className="font-meme absolute -translate-x-1/2 w-2/3 text-center select-none left-1/2 my-4 mx-0 py-0 px-1 text-3xl uppercase text-white top-0"
+            style={{ fontSize: `${fontSize}em` }}
+          >
             {meme.topText}
           </h2>
           <h2
-            className="meme--text bottom"
+            className="font-meme absolute -translate-x-1/2 w-2/3 text-center select-none left-1/2 my-4 mx-0 py-0 px-1 text-3xl uppercase text-white bottom-0"
             style={{ fontSize: `${fontSize}em` }}
           >
             {meme.bottomText}
           </h2>
         </div>
         {/* <DownloadButton randomImage={meme.randomImage} /> */}
-        <button onClick={handleCaptureClick}>Download</button>
+        <button
+          className="rounded w-fit self-center p-2 text-sm font-sans"
+          onClick={handleCaptureClick}
+        >
+          Download
+        </button>
       </section>
     </main>
   )
