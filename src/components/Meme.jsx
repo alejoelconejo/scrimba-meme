@@ -1,48 +1,61 @@
-import { useState, useEffect } from "react";
-import DownloadButton from "./DownloadButton";
+import { useState, useEffect, useCallback } from "react"
+import DownloadButton from "./DownloadButton"
+import downloadjs from "downloadjs"
+import html2canvas from "html2canvas"
 
 export default function Meme() {
+  const handleCaptureClick = useCallback(async () => {
+    const canvas = await html2canvas(document.querySelector(".meme"), {
+      logging: true,
+      letterRendering: 1,
+      allowTaint: false,
+      useCORS: true,
+    })
+    const dataURL = canvas.toDataURL("image/png")
+    downloadjs(dataURL, "meme.png", "image/png")
+  }, [])
+
   const [meme, setMeme] = useState({
     topText: "",
     bottomText: "",
     randomImage: "https://i.imgflip.com/1bij.jpg",
     name: "",
-  });
+  })
 
-  const [allMemes, setAllMemes] = useState([]);
+  const [allMemes, setAllMemes] = useState([])
 
   const getMemeImage = () => {
-    const randomNumber = Math.floor(Math.random() * allMemes.length);
-    const { url, name } = allMemes[randomNumber];
+    const randomNumber = Math.floor(Math.random() * allMemes.length)
+    const { id, url, name } = allMemes[randomNumber]
     setMeme((prevMeme) => {
-      return { ...prevMeme, randomImage: url, name: name };
-    });
-  };
+      return { ...prevMeme, randomImage: url, name: name }
+    })
+  }
 
   useEffect(() => {
     async function getMemes() {
-      const res = await fetch("https://api.imgflip.com/get_memes");
-      const data = await res.json();
-      setAllMemes(data.data.memes);
+      const res = await fetch("https://api.imgflip.com/get_memes")
+      const data = await res.json()
+      setAllMemes(data.data.memes)
     }
-    getMemes();
-  }, []);
+    getMemes()
+  }, [])
 
   const clearText = () => {
     setMeme((prevMeme) => {
-      return { ...prevMeme, topText: "", bottomText: "" };
-    });
-  };
+      return { ...prevMeme, topText: "", bottomText: "" }
+    })
+  }
 
   function handleChange(event) {
-    const { name, value } = event.target;
+    const { name, value } = event.target
     setMeme((prevMeme) => ({
       ...prevMeme,
       [name]: value,
-    }));
+    }))
   }
 
-  const [fontSize, setFontSize] = useState(2);
+  const [fontSize, setFontSize] = useState(2)
 
   return (
     <main>
@@ -98,8 +111,9 @@ export default function Meme() {
             {meme.bottomText}
           </h2>
         </div>
-        <DownloadButton randomImage={meme.randomImage} />
+        {/* <DownloadButton randomImage={meme.randomImage} /> */}
+        <button onClick={handleCaptureClick}>Download</button>
       </section>
     </main>
-  );
+  )
 }
