@@ -17,6 +17,8 @@ export default function Meme() {
 
   const [fontSize, setFontSize] = useState(2)
 
+  const [recommendedMemes, setRecommendedMemes] = useState([])
+
   useEffect(() => {
     async function getMemes() {
       const res = await fetch("https://api.imgflip.com/get_memes")
@@ -25,6 +27,33 @@ export default function Meme() {
     }
     getMemes()
   }, [])
+
+  function shuffle(array) {
+    let currentIndex = array.length,
+      randomIndex
+
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex)
+      currentIndex--
+      // And swap it with the current element.
+      ;[array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex],
+      ]
+    }
+
+    return array
+  }
+
+  useEffect(() => {
+    async function getRecommendedMemes() {
+      const allMemesSliced = await shuffle(allMemes).slice(0, 6)
+      setRecommendedMemes(allMemesSliced)
+    }
+    getRecommendedMemes()
+  }, [allMemes])
 
   return (
     <main className="max-w-3xl mx-auto">
@@ -40,6 +69,28 @@ export default function Meme() {
       <section className="flex justify-center flex-col gap-5">
         <MemeImage meme={meme} fontSize={fontSize} />
         <DownloadButton />
+      </section>
+      <section className="my-8">
+        <h3 className="text-slate-800 text-2xl">Recomendados</h3>
+        <div className="flex flex-wrap gap-4 justify-evenly items-center mt-4">
+          {allMemes.length &&
+            recommendedMemes.map(({ url, id, name }) => {
+              return (
+                <img
+                  src={url}
+                  className="h-64 w-56 object-cover rounded border-gray-700 cursor-pointer"
+                  key={id}
+                  onClick={() => {
+                    setMeme((prevMeme) => ({
+                      ...prevMeme,
+                      name: name,
+                      randomImage: url,
+                    }))
+                  }}
+                />
+              )
+            })}
+        </div>
       </section>
     </main>
   )
