@@ -55,6 +55,8 @@ export default function Meme() {
     getRecommendedMemes()
   }, [allMemes])
 
+  function handleClickSuggested() {}
+
   return (
     <main className="max-w-3xl mx-auto">
       <section className="flex flex-col px-12 py-6 gap-6">
@@ -86,6 +88,10 @@ export default function Meme() {
                       name: name,
                       randomImage: url,
                     }))
+                    window.scrollTo({
+                      top: 0,
+                      behavior: "smooth",
+                    })
                   }}
                 />
               )
