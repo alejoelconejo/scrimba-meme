@@ -2,7 +2,7 @@ export const MemeImage = ({ meme, fontSize }) => {
   return (
     <div className="relative w-fit mx-auto my-0" id="meme">
       <img
-        className=" max-w-full mx-auto my-0 object-contain h-[250px] md:h-[450px]"
+        className=" max-w-full mx-auto my-0 object-contain h-[250px] md:h-[400px]"
         src={meme.randomImage}
         alt={meme.name}
       />

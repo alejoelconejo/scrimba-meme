@@ -72,7 +72,7 @@ export default function Meme() {
         <MemeImage meme={meme} fontSize={fontSize} />
         <DownloadButton />
       </section>
-      <section className="my-8">
+      <section className="my-8 mx-4">
         <h3 className="text-slate-800 text-2xl">Recomendados</h3>
         <div className="flex flex-wrap gap-4 justify-evenly items-center mt-4">
           {allMemes.length &&
@@ -80,7 +80,7 @@ export default function Meme() {
               return (
                 <img
                   src={url}
-                  className="h-64 w-56 object-cover rounded border-gray-700 cursor-pointer"
+                  className="h-52 w-52 object-cover rounded border-gray-700 cursor-pointer"
                   key={id}
                   onClick={() => {
                     setMeme((prevMeme) => ({
