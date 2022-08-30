@@ -72,8 +72,10 @@ export default function Meme() {
         <MemeImage meme={meme} fontSize={fontSize} />
         <DownloadButton />
       </section>
-      <section className="my-8 mx-4">
-        <h3 className="text-slate-800 text-2xl">Recomendados</h3>
+      <section className="py-8 mx-4">
+        <h3 className="text-slate-800 text-2xl font-semibold dark:text-slate-200">
+          Recomendados
+        </h3>
         <div className="flex flex-wrap gap-4 justify-evenly items-center mt-4">
           {allMemes.length &&
             recommendedMemes.map(({ url, id, name }) => {
