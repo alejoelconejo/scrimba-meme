@@ -1,4 +1,4 @@
-export const MemeImage = ({ meme, fontSize }) => {
+const MemeImage = ({ meme, fontSize }) => {
   return (
     <div className="relative w-fit mx-auto my-0" id="meme">
       <img

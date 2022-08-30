@@ -1,9 +1,9 @@
-import { useCallback } from "react"
+import { useCallback, useEffect } from "react"
 
 import downloadjs from "downloadjs"
 import html2canvas from "html2canvas"
 
-export const DownloadButton = ({}) => {
+const DownloadButton = ({}) => {
   const handleCaptureClick = useCallback(async () => {
     const canvas = await html2canvas(document.querySelector("#meme"), {
       logging: true,

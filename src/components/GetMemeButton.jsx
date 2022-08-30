@@ -1,6 +1,6 @@
 import getMemeImage from "../services/getMemeImage"
 
-export const GetMemeButton = ({ allMemes, setMeme }) => {
+const GetMemeButton = ({ allMemes, setMeme }) => {
   return (
     <button
       className="rounded font-bold text-lg p-2 font-sans  bg-violet-500 w-fit mx-auto px-4"

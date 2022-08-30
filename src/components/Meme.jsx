@@ -5,7 +5,7 @@ import GetMemeButton from "./GetMemeButton"
 import Inputs from "./Inputs"
 import MemeImage from "./MemeImage"
 
-export default function Meme() {
+const Meme = () => {
   const [meme, setMeme] = useState({
     topText: "",
     bottomText: "",
@@ -55,8 +55,6 @@ export default function Meme() {
     getRecommendedMemes()
   }, [allMemes])
 
-  function handleClickSuggested() {}
-
   return (
     <main className="max-w-3xl mx-auto">
       <section className="flex flex-col px-12 py-6 gap-6">
@@ -103,3 +101,5 @@ export default function Meme() {
     </main>
   )
 }
+
+export default Meme

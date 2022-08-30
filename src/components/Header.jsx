@@ -1,6 +1,6 @@
 import trollFace from "../images/troll-face.png"
 
-export default function Header() {
+const Header = () => {
   return (
     <header className="flex justify-between items-center py-4 px-6 max-w-3xl mx-auto rounded bg-gradient-to-r from-indigo-500 to-pink-500">
       <div className="flex justify-center items-center gap-2">
@@ -13,3 +13,5 @@ export default function Header() {
     </header>
   )
 }
+
+export default Header

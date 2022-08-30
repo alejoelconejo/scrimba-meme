@@ -1,7 +1,7 @@
 import Input from "./Input"
 import InputButton from "./InputButton"
 
-export const Inputs = ({ meme, setMeme, fontSize, setFontSize }) => {
+const Inputs = ({ meme, setMeme, fontSize, setFontSize }) => {
   function handleChange(event) {
     const { name, value } = event.target
     setMeme((prevMeme) => ({

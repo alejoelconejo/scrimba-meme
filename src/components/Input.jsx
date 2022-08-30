@@ -1,4 +1,4 @@
-export const Input = ({ placeholder, onChange, value, name }) => {
+const Input = ({ placeholder, onChange, value, name }) => {
   return (
     <>
       <input
