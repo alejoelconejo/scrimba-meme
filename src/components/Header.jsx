@@ -4,8 +4,6 @@ import { ReactComponent as DarkIcon } from '../images/dark-icon.svg'
 import { ReactComponent as LightIcon } from '../images/light-icon.svg'
 
 const Header = () => {
-  const localStorage = window.localStorage
-
   // Change the icons inside the button based on previous settings
 
   useEffect(() => {
