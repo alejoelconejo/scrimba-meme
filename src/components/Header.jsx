@@ -73,8 +73,8 @@ const Header = () => {
           onClick={handleClickDark}
           className='text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none rounded-lg text-sm p-2.5'
         >
-          <DarkIcon />
-          <LightIcon />
+          <DarkIcon className='hidden w-5 h-5' />
+          <LightIcon className='hidden w-5 h-5' />
         </button>
       </div>
     </header>
