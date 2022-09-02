@@ -4,6 +4,8 @@ import DownloadButton from './DownloadButton'
 import GetMemeButton from './GetMemeButton'
 import Inputs from './Inputs'
 import MemeImage from './MemeImage'
+import Spinner from './Spinner'
+// import getMemeImage from '../services/getMemeImage.js'
 
 const Meme = () => {
   const [meme, setMeme] = useState({
@@ -15,15 +17,19 @@ const Meme = () => {
 
   const [allMemes, setAllMemes] = useState([])
 
+  const [isLoading, setIsLoading] = useState(false)
+
   const [fontSize, setFontSize] = useState(2)
 
   const [recommendedMemes, setRecommendedMemes] = useState([])
 
   useEffect(() => {
+    setIsLoading(true)
     async function getMemes() {
       const res = await fetch('https://api.imgflip.com/get_memes')
-      const data = await res.json()
-      setAllMemes(data.data.memes)
+      const dataApi = await res.json()
+      setAllMemes(dataApi.data.memes)
+      setIsLoading(false)
     }
     getMemes()
   }, [])
@@ -67,7 +73,11 @@ const Meme = () => {
         <GetMemeButton allMemes={allMemes} setMeme={setMeme} />
       </section>
       <section className='flex justify-center flex-col gap-5'>
-        <MemeImage meme={meme} fontSize={fontSize} />
+        {isLoading ? (
+          <Spinner />
+        ) : (
+          <MemeImage meme={meme} fontSize={fontSize} />
+        )}
         <DownloadButton />
       </section>
       <section className='py-8 mx-4'>

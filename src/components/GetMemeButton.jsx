@@ -1,5 +1,5 @@
 import getMemeImage from '../services/getMemeImage'
-import { ReactComponent as GetMemeImage } from '../images/get-meme-button.svg'
+import { ReactComponent as GetMemeIcon } from '../images/get-meme-button.svg'
 
 const GetMemeButton = ({ allMemes, setMeme }) => {
   return (
@@ -10,7 +10,7 @@ const GetMemeButton = ({ allMemes, setMeme }) => {
       }}
     >
       Get a new meme image
-      <GetMemeImage className='h-6' />
+      <GetMemeIcon className='h-6' />
     </button>
   )
 }
