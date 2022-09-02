@@ -10,7 +10,7 @@ const Meme = () => {
     topText: '',
     bottomText: '',
     randomImage: 'https://i.imgflip.com/1bij.jpg',
-    name: ''
+    name: '',
   })
 
   const [allMemes, setAllMemes] = useState([])
@@ -20,7 +20,7 @@ const Meme = () => {
   const [recommendedMemes, setRecommendedMemes] = useState([])
 
   useEffect(() => {
-    async function getMemes () {
+    async function getMemes() {
       const res = await fetch('https://api.imgflip.com/get_memes')
       const data = await res.json()
       setAllMemes(data.data.memes)
@@ -28,7 +28,7 @@ const Meme = () => {
     getMemes()
   }, [])
 
-  function shuffle (array) {
+  function shuffle(array) {
     let currentIndex = array.length
     let randomIndex
 
@@ -40,7 +40,7 @@ const Meme = () => {
       // And swap it with the current element.
       ;[array[currentIndex], array[randomIndex]] = [
         array[randomIndex],
-        array[currentIndex]
+        array[currentIndex],
       ]
     }
 
@@ -48,7 +48,7 @@ const Meme = () => {
   }
 
   useEffect(() => {
-    async function getRecommendedMemes () {
+    async function getRecommendedMemes() {
       const allMemesSliced = await shuffle(allMemes).slice(0, 6)
       setRecommendedMemes(allMemesSliced)
     }
@@ -86,11 +86,11 @@ const Meme = () => {
                     setMeme((prevMeme) => ({
                       ...prevMeme,
                       name,
-                      randomImage: url
+                      randomImage: url,
                     }))
                     window.scrollTo({
                       top: 0,
-                      behavior: 'smooth'
+                      behavior: 'smooth',
                     })
                   }}
                 />

@@ -1,5 +1,5 @@
-import Input from "./Input"
-import InputButton from "./InputButton"
+import Input from './Input'
+import InputButton from './InputButton'
 
 const Inputs = ({ meme, setMeme, fontSize, setFontSize }) => {
   function handleChange(event) {
@@ -12,28 +12,28 @@ const Inputs = ({ meme, setMeme, fontSize, setFontSize }) => {
 
   const clearText = () => {
     setMeme((prevMeme) => {
-      return { ...prevMeme, topText: "", bottomText: "" }
+      return { ...prevMeme, topText: '', bottomText: '' }
     })
   }
 
   return (
-    <div className="flex gap-4 flex-wrap items-center justify-center">
+    <div className='flex gap-4 flex-wrap items-center justify-center'>
       <Input
-        placeholder="Top text"
+        placeholder='Top text'
         onChange={handleChange}
         value={meme.topText}
-        name="topText"
+        name='topText'
       />
       <Input
-        placeholder="Bottom text"
+        placeholder='Bottom text'
         onChange={handleChange}
         value={meme.bottomText}
-        name="bottomText"
+        name='bottomText'
       />
-      <div className="flex gap-2">
-        <InputButton onClick={() => setFontSize(fontSize + 0.2)} text="+" />
-        <InputButton onClick={() => setFontSize(fontSize - 0.2)} text="-" />
-        <InputButton onClick={clearText} text="Clear" />
+      <div className='flex gap-2'>
+        <InputButton onClick={() => setFontSize(fontSize + 0.2)} text='+' />
+        <InputButton onClick={() => setFontSize(fontSize - 0.2)} text='-' />
+        <InputButton onClick={clearText} text='Clear' />
       </div>
     </div>
   )

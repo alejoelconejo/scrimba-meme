@@ -9,7 +9,7 @@ const DownloadButton = () => {
       logging: true,
       letterRendering: 1,
       allowTaint: false,
-      useCORS: true
+      useCORS: true,
     })
     const dataURL = canvas.toDataURL('image/png')
     downloadjs(dataURL, 'meme.png', 'image/png')
