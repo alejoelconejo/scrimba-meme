@@ -3,7 +3,7 @@ import { useCallback } from 'react'
 import downloadjs from 'downloadjs'
 import html2canvas from 'html2canvas'
 
-const DownloadButton = () => {
+const DownloadButton = ({ meme }) => {
   const handleCaptureClick = useCallback(async () => {
     const canvas = await html2canvas(document.querySelector('#meme'), {
       logging: true,
@@ -12,8 +12,9 @@ const DownloadButton = () => {
       useCORS: true,
     })
     const dataURL = canvas.toDataURL('image/png')
-    downloadjs(dataURL, 'meme.png', 'image/png')
-  }, [])
+    downloadjs(dataURL, `${meme.id}.png`, 'image/png')
+    // console.log(meme.id)
+  }, [meme])
 
   return (
     <button

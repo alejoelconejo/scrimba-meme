@@ -15,6 +15,7 @@ const Meme = () => {
     bottomText: '',
     randomImage: 'https://i.imgflip.com/1bij.jpg',
     name: 'Game of Thrones',
+    id: 132123,
   })
 
   const [allMemes, setAllMemes] = useState([])
@@ -80,7 +81,7 @@ const Meme = () => {
         ) : (
           <MemeImage meme={meme} fontSize={fontSize} />
         )}
-        <DownloadButton />
+        <DownloadButton meme={meme} />
       </section>
       <section className='py-8 mx-4'>
         <h3 className='text-slate-800 text-2xl font-semibold dark:text-slate-200'>
