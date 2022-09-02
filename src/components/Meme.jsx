@@ -7,19 +7,21 @@ import MemeImage from './MemeImage'
 import Spinner from './Spinner'
 // import getMemeImage from '../services/getMemeImage.js'
 
+const defaultFontSize = 2
+
 const Meme = () => {
   const [meme, setMeme] = useState({
     topText: '',
     bottomText: '',
     randomImage: 'https://i.imgflip.com/1bij.jpg',
-    name: '',
+    name: 'Game of Thrones',
   })
 
   const [allMemes, setAllMemes] = useState([])
 
   const [isLoading, setIsLoading] = useState(false)
 
-  const [fontSize, setFontSize] = useState(2)
+  const [fontSize, setFontSize] = useState(defaultFontSize)
 
   const [recommendedMemes, setRecommendedMemes] = useState([])
 
@@ -92,6 +94,7 @@ const Meme = () => {
                   src={url}
                   className='h-52 w-52 object-cover rounded border-gray-700 cursor-pointer'
                   key={id}
+                  title={name}
                   onClick={() => {
                     setMeme((prevMeme) => ({
                       ...prevMeme,
