@@ -3,6 +3,8 @@ import trollFace from '../images/troll-face.png'
 import { ReactComponent as DarkIcon } from '../images/dark-icon.svg'
 import { ReactComponent as LightIcon } from '../images/light-icon.svg'
 
+const localStorage = window.localStorage
+
 const Header = () => {
   // Change the icons inside the button based on previous settings
 
