@@ -88,7 +88,10 @@ const Meme = () => {
           Recomendados
         </h3>
         <div className='flex flex-wrap gap-4 justify-evenly items-center mt-4'>
-          {allMemes.length &&
+          {isLoading ? (
+            <Spinner />
+          ) : (
+            allMemes.length &&
             recommendedMemes.map(({ url, id, name }) => {
               return (
                 <img
@@ -109,7 +112,8 @@ const Meme = () => {
                   }}
                 />
               )
-            })}
+            })
+          )}
         </div>
       </section>
     </main>
