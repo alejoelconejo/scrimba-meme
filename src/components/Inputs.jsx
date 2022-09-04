@@ -2,6 +2,7 @@ import Input from './Input'
 import InputButton from './InputButton'
 
 const Inputs = ({ meme, setMeme, fontSize, setFontSize }) => {
+  // Save text input to meme state
   function handleChange(event) {
     const { name, value } = event.target
     setMeme((prevMeme) => ({
@@ -10,6 +11,7 @@ const Inputs = ({ meme, setMeme, fontSize, setFontSize }) => {
     }))
   }
 
+  // Clear input text
   const clearText = () => {
     setMeme((prevMeme) => {
       return { ...prevMeme, topText: '', bottomText: '' }

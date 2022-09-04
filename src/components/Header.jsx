@@ -4,17 +4,14 @@ import { ReactComponent as DarkIcon } from '../images/dark-icon.svg'
 import { ReactComponent as LightIcon } from '../images/light-icon.svg'
 
 const localStorage = window.localStorage
+const $ = (element) => document.querySelector(element)
 
 const Header = () => {
   // Change the icons inside the button based on previous settings
 
   useEffect(() => {
-    const themeToggleDarkIcon = document.getElementById(
-      'theme-toggle-dark-icon'
-    )
-    const themeToggleLightIcon = document.getElementById(
-      'theme-toggle-light-icon'
-    )
+    const themeToggleDarkIcon = $('#theme-toggle-dark-icon')
+    const themeToggleLightIcon = $('#theme-toggle-light-icon')
 
     if (
       localStorage.getItem('color-theme') === 'dark' ||
@@ -28,12 +25,8 @@ const Header = () => {
   }, [])
 
   const handleClickDark = () => {
-    const themeToggleDarkIcon = document.getElementById(
-      'theme-toggle-dark-icon'
-    )
-    const themeToggleLightIcon = document.getElementById(
-      'theme-toggle-light-icon'
-    )
+    const themeToggleDarkIcon = $('#theme-toggle-dark-icon')
+    const themeToggleLightIcon = $('#theme-toggle-light-icon')
 
     // toggle icons inside button
     themeToggleDarkIcon.classList.toggle('hidden')

@@ -5,27 +5,39 @@ import GetMemeButton from './GetMemeButton'
 import Inputs from './Inputs'
 import MemeImage from './MemeImage'
 import Spinner from './Spinner'
+import MemesSelection from './MemesSelection'
+import shuffleArray from '../services/shuffleArray.js'
 // import getMemeImage from '../services/getMemeImage.js'
 
+// Default font size for meme image
 const defaultFontSize = 2
 
-const Meme = () => {
-  const [meme, setMeme] = useState({
+// Amount of memes in recommended memes section
+const recommendedMemesLength = 9
+
+// Initial value of meme state
+const memeInitial = () => {
+  return {
     topText: '',
     bottomText: '',
     randomImage: 'https://i.imgflip.com/1bij.jpg',
     name: 'Game of Thrones',
     id: 132123,
-  })
+  }
+}
+
+const Meme = () => {
+  const [meme, setMeme] = useState(memeInitial)
 
   const [allMemes, setAllMemes] = useState([])
+
+  const [recommendedMemes, setRecommendedMemes] = useState([])
 
   const [isLoading, setIsLoading] = useState(false)
 
   const [fontSize, setFontSize] = useState(defaultFontSize)
 
-  const [recommendedMemes, setRecommendedMemes] = useState([])
-
+  // Fetch from API and save the response to allMemes state
   useEffect(() => {
     setIsLoading(true)
     async function getMemes() {
@@ -37,28 +49,13 @@ const Meme = () => {
     getMemes()
   }, [])
 
-  function shuffle(array) {
-    let currentIndex = array.length
-    let randomIndex
-
-    // While there remain elements to shuffle.
-    while (currentIndex !== 0) {
-      // Pick a remaining element.
-      randomIndex = Math.floor(Math.random() * currentIndex)
-      currentIndex--
-      // And swap it with the current element.
-      ;[array[currentIndex], array[randomIndex]] = [
-        array[randomIndex],
-        array[currentIndex],
-      ]
-    }
-
-    return array
-  }
-
+  // Shuffle allMemes array, slice it and save to recommendedMemes
   useEffect(() => {
     async function getRecommendedMemes() {
-      const allMemesSliced = await shuffle(allMemes).slice(0, 6)
+      const allMemesSliced = await shuffleArray(allMemes).slice(
+        0,
+        recommendedMemesLength
+      )
       setRecommendedMemes(allMemesSliced)
     }
     getRecommendedMemes()
@@ -92,27 +89,15 @@ const Meme = () => {
             <Spinner />
           ) : (
             allMemes.length &&
-            recommendedMemes.map(({ url, id, name }) => {
-              return (
-                <img
-                  src={url}
-                  className='h-52 w-52 object-cover rounded border-gray-700 cursor-pointer'
-                  key={id}
-                  title={name}
-                  onClick={() => {
-                    setMeme((prevMeme) => ({
-                      ...prevMeme,
-                      name,
-                      randomImage: url,
-                    }))
-                    window.scrollTo({
-                      top: 0,
-                      behavior: 'smooth',
-                    })
-                  }}
-                />
-              )
-            })
+            recommendedMemes.map(({ url, id, name }) => (
+              <MemesSelection
+                id={id}
+                key={id}
+                name={name}
+                url={url}
+                setMeme={setMeme}
+              />
+            ))
           )}
         </div>
       </section>
