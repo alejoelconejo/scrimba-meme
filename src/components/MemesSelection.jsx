@@ -1,8 +1,8 @@
-const MemesSelection = ({ url, id, name, setMeme }) => {
+const MemesSelection = ({ url, id, name, countBox, setMeme }) => {
   return (
     <img
       src={url}
-      className='h-52 w-52 object-cover rounded border-gray-700 cursor-pointer'
+      className='h-52 w-full object-cover rounded border-gray-700 cursor-pointer'
       title={name}
       loading='lazy'
       onClick={() => {
@@ -10,6 +10,8 @@ const MemesSelection = ({ url, id, name, setMeme }) => {
           ...prevMeme,
           name,
           randomImage: url,
+          id,
+          countBox,
         }))
         window.scrollTo({
           top: 0,

@@ -14,13 +14,30 @@ const Inputs = ({ meme, setMeme, fontSize, setFontSize }) => {
   // Clear input text
   const clearText = () => {
     setMeme((prevMeme) => {
-      return { ...prevMeme, topText: '', bottomText: '' }
+      return {
+        ...prevMeme,
+        text1: '',
+        text2: '',
+        text3: '',
+        text4: '',
+        text5: '',
+      }
     })
   }
 
   return (
-    <div className='flex gap-4 flex-wrap items-center justify-center'>
-      <Input
+    <div className='flex flex-col gap-4 flex-wrap items-center justify-center'>
+      {[...Array(meme.countBox)].map((e, i) => (
+        <Input
+          key={i}
+          placeholder={`Text ${i + 1}`}
+          onChange={handleChange}
+          value={meme[`text${i + 1}`]}
+          name={`text${i + 1}`}
+        />
+      ))}
+
+      {/* <Input
         placeholder='Top text'
         onChange={handleChange}
         value={meme.topText}
@@ -31,7 +48,7 @@ const Inputs = ({ meme, setMeme, fontSize, setFontSize }) => {
         onChange={handleChange}
         value={meme.bottomText}
         name='bottomText'
-      />
+      /> */}
       <div className='flex gap-2'>
         <InputButton onClick={() => setFontSize(fontSize + 0.2)} text='+' />
         <InputButton onClick={() => setFontSize(fontSize - 0.2)} text='-' />

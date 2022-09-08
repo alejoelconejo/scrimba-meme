@@ -7,6 +7,7 @@ import MemeImage from './MemeImage'
 import Spinner from './Spinner'
 import MemesSelection from './MemesSelection'
 import shuffleArray from '../services/shuffleArray.js'
+import fetchApi from '../services/fetchApi.js'
 // import getMemeImage from '../services/getMemeImage.js'
 
 // Default font size for meme image
@@ -18,11 +19,15 @@ const recommendedMemesLength = 9
 // Initial value of meme state
 const memeInitial = () => {
   return {
-    topText: '',
-    bottomText: '',
+    text1: '',
+    text2: '',
+    text3: '',
+    text4: '',
+    text5: '',
     randomImage: 'https://i.imgflip.com/1bij.jpg',
     name: 'Game of Thrones',
     id: 132123,
+    countBox: 2,
   }
 }
 
@@ -40,13 +45,7 @@ const Meme = () => {
   // Fetch from API and save the response to allMemes state
   useEffect(() => {
     setIsLoading(true)
-    async function getMemes() {
-      const res = await fetch('https://api.imgflip.com/get_memes')
-      const dataApi = await res.json()
-      setAllMemes(dataApi.data.memes)
-      setIsLoading(false)
-    }
-    getMemes()
+    fetchApi(setAllMemes).then(setIsLoading(false))
   }, [])
 
   // Shuffle allMemes array, slice it and save to recommendedMemes
@@ -61,41 +60,46 @@ const Meme = () => {
     getRecommendedMemes()
   }, [allMemes])
 
+  console.log(recommendedMemes)
+
   return (
-    <main className='max-w-3xl mx-auto'>
-      <section className='flex flex-col px-12 py-6 gap-6'>
-        <Inputs
-          meme={meme}
-          setMeme={setMeme}
-          fontSize={fontSize}
-          setFontSize={setFontSize}
-        />
-        <GetMemeButton allMemes={allMemes} setMeme={setMeme} />
+    <main className='max-w-5xl mx-auto px-4'>
+      <section className='flex flex-col md:flex-row justify-center mt-8'>
+        <div className='flex md:w-2/4 justify-center flex-col gap-5'>
+          {isLoading ? (
+            <Spinner />
+          ) : (
+            <MemeImage meme={meme} fontSize={fontSize} />
+          )}
+          <DownloadButton meme={meme} />
+        </div>
+        <div className='flex flex-1 flex-col py-6 gap-6'>
+          <GetMemeButton allMemes={allMemes} setMeme={setMeme} />
+          <Inputs
+            meme={meme}
+            setMeme={setMeme}
+            fontSize={fontSize}
+            setFontSize={setFontSize}
+          />
+        </div>
       </section>
-      <section className='flex justify-center flex-col gap-5'>
-        {isLoading ? (
-          <Spinner />
-        ) : (
-          <MemeImage meme={meme} fontSize={fontSize} />
-        )}
-        <DownloadButton meme={meme} />
-      </section>
-      <section className='py-8 mx-4'>
+      <section className='py-8'>
         <h3 className='text-slate-800 text-2xl font-semibold dark:text-slate-200'>
-          Recomendados
+          Recommended
         </h3>
-        <div className='flex flex-wrap gap-4 justify-evenly items-center mt-4'>
+        <div className='grid grid-cols-recommended gap-8 py-4'>
           {isLoading ? (
             <Spinner />
           ) : (
             allMemes.length &&
-            recommendedMemes.map(({ url, id, name }) => (
+            recommendedMemes.map(({ url, id, name, box_count: countBox }) => (
               <MemesSelection
                 id={id}
                 key={id}
                 name={name}
                 url={url}
                 setMeme={setMeme}
+                countBox={countBox}
               />
             ))
           )}

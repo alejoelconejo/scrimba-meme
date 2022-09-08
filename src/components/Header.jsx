@@ -55,7 +55,7 @@ const Header = () => {
   }
 
   return (
-    <header className='flex justify-between items-center py-4 px-6 max-w-3xl mx-auto rounded bg-gradient-to-r from-indigo-500 to-pink-500'>
+    <header className='flex justify-between items-center py-4 px-6 max-w-5xl mx-auto rounded rounded-t-none shadow-slate-600 shadow-sm dark:shadow-pink-500 bg-gradient-to-r from-indigo-500 to-pink-500'>
       <div className='flex flex-1 justify-center items-center gap-2'>
         <img className='w-8' src={trollFace} />
         <div className='flex gap-2 items-baseline flex-1'>
