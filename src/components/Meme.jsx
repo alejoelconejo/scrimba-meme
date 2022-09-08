@@ -45,7 +45,7 @@ const Meme = () => {
   // Fetch from API and save the response to allMemes state
   useEffect(() => {
     setIsLoading(true)
-    fetchApi(setAllMemes).then(setIsLoading(false))
+    fetchApi(setAllMemes, setIsLoading)
   }, [])
 
   // Shuffle allMemes array, slice it and save to recommendedMemes
@@ -59,8 +59,6 @@ const Meme = () => {
     }
     getRecommendedMemes()
   }, [allMemes])
-
-  console.log(recommendedMemes)
 
   return (
     <main className='max-w-5xl mx-auto px-4'>
