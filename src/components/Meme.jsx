@@ -61,9 +61,9 @@ const Meme = () => {
   }, [allMemes])
 
   return (
-    <main className='max-w-5xl mx-auto px-4'>
+    <main className='max-w-5xl mx-auto px-3'>
       <section className='flex flex-col md:flex-row justify-center mt-8'>
-        <div className='flex md:w-2/4 justify-center flex-col gap-5'>
+        <div className='flex md:w-2/4 justify-start flex-col gap-5 mb-4 md:mb-0'>
           {isLoading ? (
             <Spinner />
           ) : (
@@ -71,7 +71,7 @@ const Meme = () => {
           )}
           <DownloadButton meme={meme} />
         </div>
-        <div className='flex flex-1 flex-col py-6 gap-6'>
+        <div className='flex flex-1 flex-col gap-6'>
           <GetMemeButton allMemes={allMemes} setMeme={setMeme} />
           <Inputs
             meme={meme}
@@ -82,7 +82,7 @@ const Meme = () => {
         </div>
       </section>
       <section className='py-8'>
-        <h3 className='text-slate-800 text-2xl font-semibold dark:text-slate-200'>
+        <h3 className='text-slate-800 text-2xl font-bold dark:text-slate-200'>
           Recommended
         </h3>
         <div className='grid grid-cols-recommended gap-8 py-4'>
