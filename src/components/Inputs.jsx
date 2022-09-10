@@ -1,5 +1,8 @@
 import Input from './Input'
 import InputButton from './InputButton'
+import { ReactComponent as FontIncrease } from '../images/font-increase.svg'
+import { ReactComponent as FontDecrease } from '../images/font-decrease.svg'
+import { ReactComponent as TextClear } from '../images/text-clear.svg'
 
 const Inputs = ({ meme, setMeme, fontSize, setFontSize }) => {
   // Save text input to meme state
@@ -50,9 +53,15 @@ const Inputs = ({ meme, setMeme, fontSize, setFontSize }) => {
         name='bottomText'
       /> */}
       <div className='flex gap-2'>
-        <InputButton onClick={() => setFontSize(fontSize + 0.2)} text='+' />
-        <InputButton onClick={() => setFontSize(fontSize - 0.2)} text='-' />
-        <InputButton onClick={clearText} text='Clear' />
+        <InputButton
+          onClick={() => setFontSize(fontSize + 0.2)}
+          buttonImage={<FontIncrease />}
+        />
+        <InputButton
+          onClick={() => setFontSize(fontSize - 0.2)}
+          buttonImage={<FontDecrease />}
+        />
+        <InputButton onClick={clearText} buttonImage={<TextClear />} />
       </div>
     </div>
   )

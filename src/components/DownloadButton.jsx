@@ -18,7 +18,7 @@ const DownloadButton = ({ meme }) => {
 
   return (
     <button
-      className='rounded w-fit self-center p-2 text-sm bg-lime-500 font-semibold'
+      className='rounded w-fit self-center p-2 text-sm bg-lime-600 font-semibold'
       onClick={handleCaptureClick}
     >
       Download

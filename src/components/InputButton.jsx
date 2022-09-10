@@ -1,11 +1,11 @@
-const InputButton = ({ onClick, text }) => {
+const InputButton = ({ onClick, buttonImage }) => {
   return (
     <>
       <button
-        className='font-sans text-base rounded p-2 font-semibold bg-lime-500'
+        className='font-sans h-10 w-10 flex justify-center items-center rounded p-2 font-semibold bg-amber-500'
         onClick={onClick}
       >
-        {text}
+        {buttonImage}
       </button>
     </>
   )
