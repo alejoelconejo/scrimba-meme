@@ -64,7 +64,7 @@ const Meme = () => {
   }, [allMemes])
 
   return (
-    <main className='max-w-5xl mx-auto px-3 md:px-0'>
+    <main className='max-w-5xl mx-auto px-3 md:px-0 scroll-smooth'>
       <section className='flex flex-col md:flex-row justify-center mt-8'>
         <div className='flex md:w-2/4 justify-start flex-col gap-5 mb-4 md:mb-0'>
           {isLoading ? (
