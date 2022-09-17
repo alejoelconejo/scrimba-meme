@@ -40,18 +40,6 @@ const Inputs = ({ meme, setMeme, fontSize, setFontSize }) => {
         />
       ))}
 
-      {/* <Input
-        placeholder='Top text'
-        onChange={handleChange}
-        value={meme.topText}
-        name='topText'
-      />
-      <Input
-        placeholder='Bottom text'
-        onChange={handleChange}
-        value={meme.bottomText}
-        name='bottomText'
-      /> */}
       <div className='flex gap-2'>
         <InputButton
           onClick={() => setFontSize(fontSize + 0.2)}
