@@ -11,7 +11,7 @@ import fetchApi from '../services/fetchApi.js'
 // import getMemeImage from '../services/getMemeImage.js'
 
 // Default font size for meme image
-const defaultFontSize = 2
+const defaultFontSize = 1.8
 
 // Amount of memes in recommended memes section
 const recommendedMemesLength = 9
