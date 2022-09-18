@@ -9,7 +9,14 @@ const MemeImage = ({ meme, fontSize }) => {
         alt={meme.name}
         title={meme.name}
       />
-      <MemeText meme={meme} fontSize={fontSize} />
+      {[...Array(meme.countBox)].map((e, i) => (
+        <MemeText
+          meme={meme}
+          key={i}
+          fontSize={fontSize}
+          memeText={meme[`text${i + 1}`]}
+        />
+      ))}
     </div>
   )
 }
