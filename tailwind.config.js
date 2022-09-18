@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ['Karla', ...defaultTheme.fontFamily.sans],
-      meme: ['impact', ...defaultTheme.fontFamily.sans],
+      meme: ['Impact', ...defaultTheme.fontFamily.sans],
     },
     extend: {
       gridTemplateColumns: {
