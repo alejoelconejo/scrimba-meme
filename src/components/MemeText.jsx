@@ -3,7 +3,7 @@ import { Rnd } from 'react-rnd'
 const MemeText = ({ fontSize, memeText, vertical }) => {
   return (
     <Rnd
-      className='font-meme font-bold hover:border-gray-400 border-dashed border-transparent border-2 break-words text-center [-webkit-text-stroke:2px_#000] uppercase text-white'
+      className='font-meme font-bold active:border-gray-400 md:hover:border-gray-400 border-dashed border-transparent border-2 break-words text-center [-webkit-text-stroke:2px_#000] uppercase text-white'
       style={{ fontSize: `${fontSize}em` }}
       bounds='parent'
       default={{
