@@ -14,7 +14,7 @@ import fetchApi from '../services/fetchApi.js'
 const defaultFontSize = 1.8
 
 // Amount of memes in recommended memes section
-const recommendedMemesLength = 9
+const recommendedMemesLength = 8
 
 // Initial value of meme state
 const memeInitial = () => {

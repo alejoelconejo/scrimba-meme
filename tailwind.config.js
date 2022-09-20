@@ -11,7 +11,7 @@ module.exports = {
     },
     extend: {
       gridTemplateColumns: {
-        recommended: 'repeat(auto-fill, minmax(250px, 1fr))',
+        recommended: 'repeat(auto-fill, minmax(200px, 1fr))',
       },
     },
   },
