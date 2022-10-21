@@ -12,8 +12,8 @@ const DownloadButton = ({ meme }) => {
       useCORS: true,
     })
     const imageURL = canvas.toDataURL('image/png')
-    const imageFile = dataURLtoFile(imageURL, 'holu.png')
-    shareFile(imageFile, 'Prueba', 'de cosas')
+    const imageFile = dataURLtoFile(imageURL, `${meme.id}.png`)
+    shareFile(imageFile, `${meme.name}`, '')
   }
 
   const handleClickDownload = async () => {
