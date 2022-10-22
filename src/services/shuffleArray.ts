@@ -1,6 +1,5 @@
 // Receives an array and returns the same array shuffled
-
-export default function shuffleArray(array) {
+export default function shuffleArray(array: any[]) {
   let currentIndex = array.length
   let randomIndex
 

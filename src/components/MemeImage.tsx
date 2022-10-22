@@ -1,6 +1,12 @@
+import { MemeImg } from '../types'
 import MemeText from './MemeText'
 
-const MemeImage = ({ meme, fontSize }) => {
+interface Params {
+  meme: MemeImg
+  fontSize: number
+}
+
+const MemeImage = ({ meme, fontSize }: Params) => {
   return (
     <div className='relative w-full overflow-hidden' id='meme'>
       <img
@@ -14,6 +20,7 @@ const MemeImage = ({ meme, fontSize }) => {
           key={i}
           vertical={i}
           fontSize={fontSize}
+          // @ts-ignore
           memeText={meme[`text${i + 1}`]}
         />
       ))}

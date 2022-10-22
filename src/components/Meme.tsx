@@ -10,6 +10,8 @@ import shuffleArray from '../services/shuffleArray.js'
 import fetchApi from '../services/fetchApi.js'
 // import getMemeImage from '../services/getMemeImage.js'
 
+import { MemeImg, MemeType } from '../types'
+
 // Default font size for meme image
 const defaultFontSize = 1.8
 
@@ -32,11 +34,11 @@ const memeInitial = () => {
 }
 
 const Meme = () => {
-  const [meme, setMeme] = useState(memeInitial)
+  const [meme, setMeme] = useState<MemeImg>(memeInitial)
 
-  const [allMemes, setAllMemes] = useState([])
+  const [allMemes, setAllMemes] = useState<MemeType[]>([])
 
-  const [recommendedMemes, setRecommendedMemes] = useState([])
+  const [recommendedMemes, setRecommendedMemes] = useState<MemeType[]>([])
 
   const [isLoading, setIsLoading] = useState(false)
 
@@ -54,7 +56,7 @@ const Meme = () => {
   // Shuffle allMemes array, slice it and save to recommendedMemes
   useEffect(() => {
     async function getRecommendedMemes() {
-      const allMemesSliced = await shuffleArray(allMemes).slice(
+      const allMemesSliced: MemeType[] = await shuffleArray(allMemes).slice(
         0,
         recommendedMemesLength
       )

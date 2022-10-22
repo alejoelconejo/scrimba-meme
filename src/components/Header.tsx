@@ -4,7 +4,7 @@ import { ReactComponent as DarkIcon } from '../images/dark-icon.svg'
 import { ReactComponent as LightIcon } from '../images/light-icon.svg'
 
 const localStorage = window.localStorage
-const $ = (element) => document.querySelector(element)
+const $ = (element: any): HTMLElement => document.querySelector(element)
 
 const Header = () => {
   // Change the icons inside the button based on previous settings

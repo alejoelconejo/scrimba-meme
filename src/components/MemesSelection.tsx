@@ -1,4 +1,20 @@
-const MemesSelection = ({ url, id, name, countBox, setMeme }) => {
+import { MemeImg } from '../types'
+
+interface Params {
+  url: string
+  id: number
+  name: string
+  countBox: number
+  setMeme: React.Dispatch<React.SetStateAction<MemeImg>>
+}
+
+const MemesSelection = ({
+  url,
+  id,
+  name,
+  countBox,
+  setMeme,
+}: Params): JSX.Element => {
   return (
     <a href='#'>
       <img

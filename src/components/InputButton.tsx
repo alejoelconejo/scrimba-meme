@@ -1,4 +1,11 @@
-const InputButton = ({ onClick, buttonImage }) => {
+import React from 'react'
+
+interface Params {
+  onClick: () => void
+  buttonImage: React.ReactNode
+}
+
+const InputButton = ({ onClick, buttonImage }: Params) => {
   return (
     <>
       <button

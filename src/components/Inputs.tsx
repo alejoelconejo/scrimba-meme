@@ -3,10 +3,24 @@ import InputButton from './InputButton'
 import { ReactComponent as FontIncrease } from '../images/font-increase.svg'
 import { ReactComponent as FontDecrease } from '../images/font-decrease.svg'
 import { ReactComponent as TextClear } from '../images/text-clear.svg'
+import { MemeImg } from '../types'
+import React from 'react'
 
-const Inputs = ({ meme, setMeme, fontSize, setFontSize }) => {
+interface Params {
+  meme: MemeImg
+  setMeme: React.Dispatch<React.SetStateAction<MemeImg>>
+  fontSize: number
+  setFontSize: React.Dispatch<React.SetStateAction<number>>
+}
+
+const Inputs = ({
+  meme,
+  setMeme,
+  fontSize,
+  setFontSize,
+}: Params): JSX.Element => {
   // Save text input to meme state
-  function handleChange(event) {
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target
     setMeme((prevMeme) => ({
       ...prevMeme,
@@ -35,6 +49,7 @@ const Inputs = ({ meme, setMeme, fontSize, setFontSize }) => {
           key={i}
           placeholder={`Text ${i + 1}`}
           onChange={handleChange}
+          // @ts-ignore
           value={meme[`text${i + 1}`]}
           name={`text${i + 1}`}
         />

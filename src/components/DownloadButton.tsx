@@ -2,21 +2,28 @@ import html2canvas from 'html2canvas'
 import downloadjs from 'downloadjs'
 import { dataURLtoFile } from '../actions/dataURLtoFile'
 import { shareFile } from '../actions/shareFile'
+import { MemeImg } from '../types'
 
-const DownloadButton = ({ meme }) => {
+interface Params {
+  meme: MemeImg
+}
+
+const DownloadButton = ({ meme }: Params) => {
   const handleClickShare = async () => {
+    // @ts-ignore
     const canvas = await html2canvas(document.querySelector('#meme'), {
       logging: true,
       letterRendering: 1,
       allowTaint: false,
       useCORS: true,
     })
-    const imageURL = canvas.toDataURL('image/png')
-    const imageFile = dataURLtoFile(imageURL, `${meme.id}.png`)
+    const imageURL = await canvas.toDataURL('image/png')
+    const imageFile = await dataURLtoFile(imageURL, `${meme.id}.png`)
     shareFile(imageFile, `${meme.name}`, '')
   }
 
   const handleClickDownload = async () => {
+    // @ts-ignore
     const canvas = await html2canvas(document.querySelector('#meme'), {
       logging: true,
       letterRendering: 1,
