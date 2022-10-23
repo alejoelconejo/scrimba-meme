@@ -11,7 +11,7 @@ interface Params {
 const GetMemeButton = ({ allMemes, setMeme }: Params) => {
   return (
     <button
-      className='rounded focus:ring-2 ring-violet-800 font-bold text-lg p-2 font-sans  bg-violet-500 w-fit mx-auto px-4 flex gap-2 items-end'
+      className='rounded focus:ring-2 ring-violet-800 font-bold text-lg p-2 font-sans  bg-violet-500 hover:bg-violet-400 w-fit mx-auto px-4 flex gap-2 items-end'
       onClick={() => {
         getMemeImage(allMemes, setMeme)
       }}

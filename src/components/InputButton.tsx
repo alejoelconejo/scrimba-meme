@@ -9,7 +9,7 @@ const InputButton = ({ onClick, buttonImage }: Params) => {
   return (
     <>
       <button
-        className='h-10 w-10 flex justify-center items-center rounded p-2 bg-amber-500'
+        className='h-10 w-10 flex justify-center items-center rounded p-2 bg-amber-500 hover:bg-amber-400'
         onClick={onClick}
       >
         {buttonImage}
