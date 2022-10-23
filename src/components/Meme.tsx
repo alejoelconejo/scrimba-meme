@@ -5,7 +5,7 @@ import GetMemeButton from './GetMemeButton'
 import Inputs from './Inputs'
 import MemeImage from './MemeImage'
 import Spinner from './Spinner'
-import MemesSelection from './MemesSelection'
+import MemesGrid from './MemesGrid'
 import shuffleArray from '../services/shuffleArray.js'
 import fetchApi from '../services/fetchApi.js'
 // import getMemeImage from '../services/getMemeImage.js'
@@ -14,9 +14,6 @@ import { MemeImg, MemeType } from '../types'
 
 // Default font size for meme image
 const defaultFontSize = 1.8
-
-// Amount of memes in recommended memes section
-const recommendedMemesLength = 8
 
 // Initial value of meme state
 const memeInitial = () => {
@@ -38,8 +35,6 @@ const Meme = () => {
 
   const [allMemes, setAllMemes] = useState<MemeType[]>([])
 
-  const [recommendedMemes, setRecommendedMemes] = useState<MemeType[]>([])
-
   const [isLoading, setIsLoading] = useState(false)
 
   const [fontSize, setFontSize] = useState(defaultFontSize)
@@ -48,22 +43,11 @@ const Meme = () => {
   useEffect(() => {
     setIsLoading(true)
     fetchApi().then((dataApi) => {
+      shuffleArray(dataApi.data.memes)
       setAllMemes(dataApi.data.memes)
       setIsLoading(false)
     })
   }, [])
-
-  // Shuffle allMemes array, slice it and save to recommendedMemes
-  useEffect(() => {
-    async function getRecommendedMemes() {
-      const allMemesSliced: MemeType[] = await shuffleArray(allMemes).slice(
-        0,
-        recommendedMemesLength
-      )
-      setRecommendedMemes(allMemesSliced)
-    }
-    getRecommendedMemes()
-  }, [allMemes])
 
   return (
     <main className='max-w-5xl mx-auto px-3 md:px-0 scroll-smooth'>
@@ -88,15 +72,15 @@ const Meme = () => {
       </section>
       <section className='py-8'>
         <h3 className='text-slate-800 text-2xl font-bold dark:text-slate-200'>
-          Recommended
+          Other memes
         </h3>
         <div className='grid grid-cols-recommended gap-8 py-4'>
           {isLoading ? (
             <Spinner />
           ) : (
             allMemes.length &&
-            recommendedMemes.map(({ url, id, name, box_count: countBox }) => (
-              <MemesSelection
+            allMemes.map(({ url, id, name, box_count: countBox }) => (
+              <MemesGrid
                 id={id}
                 key={id}
                 name={name}

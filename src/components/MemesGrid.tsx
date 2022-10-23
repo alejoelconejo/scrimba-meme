@@ -8,7 +8,7 @@ interface Params {
   setMeme: React.Dispatch<React.SetStateAction<MemeImg>>
 }
 
-const MemesSelection = ({
+const MemesGrid = ({
   url,
   id,
   name,
@@ -36,4 +36,4 @@ const MemesSelection = ({
   )
 }
 
-export default MemesSelection
+export default MemesGrid
