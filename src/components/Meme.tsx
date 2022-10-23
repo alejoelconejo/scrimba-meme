@@ -58,7 +58,6 @@ const Meme = () => {
           ) : (
             <MemeImage meme={meme} fontSize={fontSize} />
           )}
-          <DownloadButton meme={meme} />
         </div>
         <div className='flex flex-1 flex-col gap-6'>
           <GetMemeButton allMemes={allMemes} setMeme={setMeme} />

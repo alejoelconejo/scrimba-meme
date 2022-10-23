@@ -5,6 +5,7 @@ import { ReactComponent as FontDecrease } from '../images/font-decrease.svg'
 import { ReactComponent as TextClear } from '../images/text-clear.svg'
 import { MemeImg } from '../types'
 import React from 'react'
+import DownloadButton from './DownloadButton'
 
 interface Params {
   meme: MemeImg
@@ -44,17 +45,6 @@ const Inputs = ({
 
   return (
     <div className='flex flex-col gap-4 flex-wrap items-center justify-center'>
-      {[...Array(meme.countBox)].map((e, i) => (
-        <Input
-          key={i}
-          placeholder={`Text ${i + 1}`}
-          onChange={handleChange}
-          // @ts-ignore
-          value={meme[`text${i + 1}`]}
-          name={`text${i + 1}`}
-        />
-      ))}
-
       <div className='flex gap-2'>
         <InputButton
           onClick={() => setFontSize(fontSize + 0.2)}
@@ -66,6 +56,17 @@ const Inputs = ({
         />
         <InputButton onClick={clearText} buttonImage={<TextClear />} />
       </div>
+      {[...Array(meme.countBox)].map((e, i) => (
+        <Input
+          key={i}
+          placeholder={`Text ${i + 1}`}
+          onChange={handleChange}
+          // @ts-ignore
+          value={meme[`text${i + 1}`]}
+          name={`text${i + 1}`}
+        />
+      ))}
+      <DownloadButton meme={meme} />
     </div>
   )
 }

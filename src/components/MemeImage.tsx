@@ -8,9 +8,9 @@ interface Params {
 
 const MemeImage = ({ meme, fontSize }: Params) => {
   return (
-    <div className='relative w-full overflow-hidden' id='meme'>
+    <div className='relative w-full overflow-hidden ' id='meme'>
       <img
-        className='w-full object-contain max-h-[350px] md:max-h-[450px]'
+        className='w-full object-contain max-h-[80vh]'
         src={meme.randomImage}
         alt={meme.name}
         title={meme.name}
