@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 import GetMemeButton from './GetMemeButton'
 import Inputs from './Inputs'
@@ -9,6 +9,7 @@ import shuffleArray from '../services/shuffleArray.js'
 import fetchApi from '../services/fetchApi.js'
 
 import { MemeImg, MemeType } from '../types'
+import DownloadButton from './DownloadButton'
 
 // Default font size for meme image
 const defaultFontSize = 1.8
@@ -37,6 +38,8 @@ const Meme = () => {
 
   const [fontSize, setFontSize] = useState(defaultFontSize)
 
+  const memeRef = useRef(null)
+
   useEffect(() => {
     setIsLoading(true)
     fetchApi().then(({ data }) => {
@@ -53,7 +56,13 @@ const Meme = () => {
           {isLoading ? (
             <Spinner />
           ) : (
-            <MemeImage meme={meme} fontSize={fontSize} />
+            <div
+              className='relative w-full overflow-hidden '
+              id='meme'
+              ref={memeRef}
+            >
+              <MemeImage meme={meme} fontSize={fontSize} />
+            </div>
           )}
         </div>
         <div className='flex flex-1 flex-col gap-6'>
@@ -64,6 +73,7 @@ const Meme = () => {
             fontSize={fontSize}
             setFontSize={setFontSize}
           />
+          <DownloadButton meme={meme} />
         </div>
       </section>
       <section className='py-8'>

@@ -5,7 +5,6 @@ import { ReactComponent as FontDecrease } from '../images/font-decrease.svg'
 import { ReactComponent as TextClear } from '../images/text-clear.svg'
 import { MemeImg } from '../types'
 import React from 'react'
-import DownloadButton from './DownloadButton'
 
 interface Props {
   meme: MemeImg
@@ -66,7 +65,6 @@ const Inputs = ({
           name={`text${i + 1}`}
         />
       ))}
-      <DownloadButton meme={meme} />
     </div>
   )
 }

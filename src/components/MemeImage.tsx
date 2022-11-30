@@ -8,7 +8,7 @@ interface Props {
 
 const MemeImage = ({ meme, fontSize }: Props) => {
   return (
-    <div className='relative w-full overflow-hidden ' id='meme'>
+    <>
       <img
         className='w-full object-contain max-h-[80vh]'
         src={meme.randomImage}
@@ -24,7 +24,7 @@ const MemeImage = ({ meme, fontSize }: Props) => {
           memeText={meme[`text${i + 1}`]}
         />
       ))}
-    </div>
+    </>
   )
 }
 
