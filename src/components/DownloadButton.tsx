@@ -1,15 +1,15 @@
 import html2canvas from 'html2canvas'
 import downloadjs from 'downloadjs'
-import { dataURLtoFile } from '../actions/dataURLtoFile'
-import { shareFile } from '../actions/shareFile'
+import { dataURLtoFile } from '../utils/dataURLtoFile'
+import { shareFile } from '../utils/shareFile'
 import { MemeImg } from '../types'
 
-interface Params {
+interface Props {
   meme: MemeImg
 }
 
-const DownloadButton = ({ meme }: Params) => {
-  const handleClickShare = async () => {
+const DownloadButton = ({ meme }: Props) => {
+  const getCanvas = async () => {
     // @ts-ignore
     const canvas = await html2canvas(document.querySelector('#meme'), {
       logging: true,
@@ -18,19 +18,17 @@ const DownloadButton = ({ meme }: Params) => {
       useCORS: true,
     })
     const imageURL = await canvas.toDataURL('image/png')
+    return imageURL
+  }
+
+  const handleClickShare = async () => {
+    const imageURL = await getCanvas()
     const imageFile = await dataURLtoFile(imageURL, `${meme.id}.png`)
     shareFile(imageFile, `${meme.name}`, '')
   }
 
   const handleClickDownload = async () => {
-    // @ts-ignore
-    const canvas = await html2canvas(document.querySelector('#meme'), {
-      logging: true,
-      letterRendering: 1,
-      allowTaint: false,
-      useCORS: true,
-    })
-    const imageURL = canvas.toDataURL('image/png')
+    const imageURL = await getCanvas()
     downloadjs(imageURL, `${meme.id}.png`, 'image/png')
   }
 

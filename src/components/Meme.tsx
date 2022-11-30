@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 
-import DownloadButton from './DownloadButton'
 import GetMemeButton from './GetMemeButton'
 import Inputs from './Inputs'
 import MemeImage from './MemeImage'
@@ -39,12 +38,11 @@ const Meme = () => {
 
   const [fontSize, setFontSize] = useState(defaultFontSize)
 
-  // Fetch from API and save the response to allMemes state
   useEffect(() => {
     setIsLoading(true)
-    fetchApi().then((dataApi) => {
-      shuffleArray(dataApi.data.memes)
-      setAllMemes(dataApi.data.memes)
+    fetchApi().then(({ data }) => {
+      shuffleArray(data.memes)
+      setAllMemes(data.memes)
       setIsLoading(false)
     })
   }, [])

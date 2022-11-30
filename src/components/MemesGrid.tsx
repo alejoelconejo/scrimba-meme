@@ -1,6 +1,6 @@
 import { MemeImg } from '../types'
 
-interface Params {
+interface Props {
   url: string
   id: number
   name: string
@@ -14,7 +14,7 @@ const MemesGrid = ({
   name,
   countBox,
   setMeme,
-}: Params): JSX.Element => {
+}: Props): JSX.Element => {
   return (
     <a href='#'>
       <img

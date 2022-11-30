@@ -1,12 +1,12 @@
 import { MemeImg } from '../types'
 import MemeText from './MemeText'
 
-interface Params {
+interface Props {
   meme: MemeImg
   fontSize: number
 }
 
-const MemeImage = ({ meme, fontSize }: Params) => {
+const MemeImage = ({ meme, fontSize }: Props) => {
   return (
     <div className='relative w-full overflow-hidden ' id='meme'>
       <img

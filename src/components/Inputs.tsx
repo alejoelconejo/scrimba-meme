@@ -7,7 +7,7 @@ import { MemeImg } from '../types'
 import React from 'react'
 import DownloadButton from './DownloadButton'
 
-interface Params {
+interface Props {
   meme: MemeImg
   setMeme: React.Dispatch<React.SetStateAction<MemeImg>>
   fontSize: number
@@ -19,7 +19,7 @@ const Inputs = ({
   setMeme,
   fontSize,
   setFontSize,
-}: Params): JSX.Element => {
+}: Props): JSX.Element => {
   // Save text input to meme state
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target

@@ -1,11 +1,11 @@
 import React from 'react'
 
-interface Params {
+interface Props {
   onClick: () => void
   buttonImage: React.ReactNode
 }
 
-const InputButton = ({ onClick, buttonImage }: Params) => {
+const InputButton = ({ onClick, buttonImage }: Props) => {
   return (
     <>
       <button

@@ -1,4 +1,4 @@
-export const shareFile = (file, title, text) => {
+export const shareFile = (file: File, title: string, text: string) => {
   if (navigator.canShare && navigator.canShare({ files: [file] })) {
     navigator
       .share({

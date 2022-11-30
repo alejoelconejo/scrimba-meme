@@ -1,8 +1,10 @@
-import React, { SetStateAction } from 'react'
 import { MemeImg, MemeType } from '../types'
 
 interface GetMemeImage {
-  (allMemes: MemeType[], setMeme: React.Dispatch<SetStateAction<MemeImg>>): void
+  (
+    allMemes: MemeType[],
+    setMeme: React.Dispatch<React.SetStateAction<MemeImg>>
+  ): void
 }
 
 const getMemeImage: GetMemeImage = (allMemes, setMeme) => {

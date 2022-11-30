@@ -1,11 +1,11 @@
-interface Params {
+interface Props {
   placeholder: string
   onChange: React.ChangeEventHandler<HTMLInputElement>
   value: string
   name: string
 }
 
-const Input = ({ placeholder, onChange, value, name }: Params) => {
+const Input = ({ placeholder, onChange, value, name }: Props) => {
   return (
     <>
       <input
