@@ -5,7 +5,7 @@ import Inputs from './Inputs'
 import MemeImage from './MemeImage'
 import Spinner from './Spinner'
 import MemesGrid from './MemesGrid'
-import shuffleArray from '../services/shuffleArray.js'
+import shuffleArray from '../utils/shuffleArray.js'
 import fetchApi from '../services/fetchApi.js'
 
 import { MemeImg, MemeType } from '../types'

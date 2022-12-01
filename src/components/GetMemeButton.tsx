@@ -1,4 +1,4 @@
-import getMemeImage from '../services/getMemeImage'
+import getMemeImage from '../utils/getMemeImage'
 import { ReactComponent as GetMemeIcon } from '../images/get-meme-button.svg'
 import { MemeImg, MemeType } from '../types'
 import React from 'react'
