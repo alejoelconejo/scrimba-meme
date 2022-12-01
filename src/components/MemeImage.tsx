@@ -15,7 +15,7 @@ const MemeImage = ({ meme, fontSize }: Props) => {
         alt={meme.name}
         title={meme.name}
       />
-      {[...Array(meme.countBox)].map((e, i) => (
+      {[...Array(meme.countBox)].map((_, i) => (
         <MemeText
           key={i}
           vertical={i}
