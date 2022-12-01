@@ -16,7 +16,7 @@ const MemeText = ({ fontSize, memeText, vertical }: Props) => {
         x: 0,
         y: vertical * 50,
         width: 200,
-        height: 100,
+        height: 50,
       }}
       maxWidth='100%'
       maxHeight='100%'
