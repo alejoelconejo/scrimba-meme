@@ -48,12 +48,18 @@ const Inputs = ({
         <InputButton
           onClick={() => setFontSize(fontSize + 0.2)}
           buttonImage={<FontIncrease />}
+          ariaLabel='Increase Font Size'
         />
         <InputButton
           onClick={() => setFontSize(fontSize - 0.2)}
           buttonImage={<FontDecrease />}
+          ariaLabel='Decrease Font Size'
         />
-        <InputButton onClick={clearText} buttonImage={<TextClear />} />
+        <InputButton
+          onClick={clearText}
+          buttonImage={<TextClear />}
+          ariaLabel='Clear Text'
+        />
       </div>
       {[...Array(meme.box_count)].map((e, i) => (
         <Input
