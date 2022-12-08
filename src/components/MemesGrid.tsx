@@ -26,9 +26,9 @@ const MemesGrid = ({
           setMeme((prevMeme) => ({
             ...prevMeme,
             name,
-            randomImage: url,
+            url,
             id,
-            countBox,
+            box_count: countBox,
           }))
         }}
       />

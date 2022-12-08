@@ -11,11 +11,11 @@ const MemeImage = ({ meme, fontSize }: Props) => {
     <>
       <img
         className='w-full object-contain max-h-[80vh]'
-        src={meme.randomImage}
+        src={meme.url}
         alt={meme.name}
         title={meme.name}
       />
-      {[...Array(meme.countBox)].map((_, i) => (
+      {[...Array(meme.box_count)].map((_, i) => (
         <MemeText
           key={i}
           vertical={i}

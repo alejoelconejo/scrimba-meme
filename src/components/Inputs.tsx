@@ -55,7 +55,7 @@ const Inputs = ({
         />
         <InputButton onClick={clearText} buttonImage={<TextClear />} />
       </div>
-      {[...Array(meme.countBox)].map((e, i) => (
+      {[...Array(meme.box_count)].map((e, i) => (
         <Input
           key={i}
           placeholder={`Text ${i + 1}`}

@@ -22,10 +22,12 @@ const memeInitial = () => {
     text3: '',
     text4: '',
     text5: '',
-    randomImage: 'https://i.imgflip.com/1bij.jpg',
+    url: 'https://i.imgflip.com/1bij.jpg',
     name: 'Game of Thrones',
     id: 132123,
-    countBox: 2,
+    box_count: 2,
+    width: 200,
+    height: 100,
   }
 }
 
@@ -85,14 +87,14 @@ const Meme = () => {
             <Spinner />
           ) : (
             allMemes.length &&
-            allMemes.map(({ url, id, name, box_count: countBox }) => (
+            allMemes.map(({ url, id, name, box_count }) => (
               <MemesGrid
                 id={id}
                 key={id}
                 name={name}
                 url={url}
                 setMeme={setMeme}
-                countBox={countBox}
+                countBox={box_count}
               />
             ))
           )}

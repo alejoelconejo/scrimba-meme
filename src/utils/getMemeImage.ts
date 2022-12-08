@@ -9,9 +9,9 @@ interface GetMemeImage {
 
 const getMemeImage: GetMemeImage = (allMemes, setMeme) => {
   const randomNumber = Math.floor(Math.random() * allMemes.length)
-  const { url, name, id, box_count: countBox } = allMemes[randomNumber]
+  const { url, name, id, box_count } = allMemes[randomNumber]
   setMeme((prevMeme) => {
-    return { ...prevMeme, randomImage: url, name, id, countBox }
+    return { ...prevMeme, url, name, id, box_count }
   })
 }
 
