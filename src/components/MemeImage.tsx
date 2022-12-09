@@ -10,7 +10,7 @@ const MemeImage = ({ meme, fontSize }: Props) => {
   return (
     <>
       <img
-        className='w-full object-contain max-h-[80vh]'
+        className='w-full object-contain md:max-h-[50vh] max-h-[70vh]'
         src={meme.url}
         alt={meme.name}
         title={meme.name}
