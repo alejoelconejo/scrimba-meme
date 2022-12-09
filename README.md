@@ -2,7 +2,7 @@
 
 ![Memardo desktop screenshot](https://memardo.vercel.app/memardo-desktop.webp)
 
-App to create and share trending memes.
+App to create and share trending memes. Based on a <a target="_blank" href='https://scrimba.com'>Scrimba</a> project.
 
 You are able to:
 - Pick a trending meme image
