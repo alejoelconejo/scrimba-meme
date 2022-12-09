@@ -6,14 +6,13 @@ import { MemeImg } from '../types'
 
 interface Props {
   meme: MemeImg
+  memeRef: React.MutableRefObject<HTMLElement | null>
 }
 
-const DownloadButton = ({ meme }: Props) => {
+const DownloadButton = ({ meme, memeRef }: Props) => {
   const getCanvas = async () => {
-    // @ts-ignore
-    const canvas = await html2canvas(document.querySelector('#meme'), {
+    const canvas = await html2canvas(memeRef.current!, {
       logging: true,
-      letterRendering: 1,
       allowTaint: false,
       useCORS: true,
     })

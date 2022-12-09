@@ -75,7 +75,7 @@ const Meme = () => {
             fontSize={fontSize}
             setFontSize={setFontSize}
           />
-          <DownloadButton meme={meme} />
+          <DownloadButton meme={meme} memeRef={memeRef} />
         </div>
       </section>
       <section className='py-8'>
